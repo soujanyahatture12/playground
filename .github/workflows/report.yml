@@ -13,6 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Verify file presence
+        run: |
+          if [ ! -f ".github/workflows/test_calculator.py" ]; then
+            echo "File .github/workflows/test_calculator.py not found!"
+            exit 1
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -23,14 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pytest-markdown-docs
 
-      - name: Verify file presence
-        run: |
-          if [ ! -f ".github/workflows/test_calculator.py" ]; then
-            echo "File .github/workflows/test_calculator.py not found!"
-            exit 1
-          fi
-
-      - name: Run all tests and generate markdown report
+      - name: Run pytest with markdown-docs
         run: |
           pytest --markdown-docs > pytest_report.md
 
