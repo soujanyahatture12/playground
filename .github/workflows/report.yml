@@ -28,7 +28,7 @@ jobs:
     
     - name: Run tests and generate markdown report
       run: |
-        pytest --md=pytest_report.md
+        pytest test_calculator.py --md=pytest_report.md
     
     - name: Display markdown report
       run: |
