@@ -32,7 +32,7 @@ jobs:
 
       - name: Run all tests and generate markdown report
         run: |
-          pytest --markdown-docs --md-file=pytest_report.md
+          pytest --markdown-docs > pytest_report.md
 
       - name: Display markdown report
         run: |
