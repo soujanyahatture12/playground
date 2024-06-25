@@ -39,12 +39,19 @@ jobs:
       - name: Run pytest with markdown-docs
         run: |
           echo "Running pytest with markdown-docs..."
-          pytest --markdown-docs --maxfail=1 --disable-warnings > pytest_report.md || echo "Pytest failed"
+          pytest --markdown-docs > pytest_report.md || echo "Pytest failed"
           cat pytest_report.md
 
       - name: Display markdown report
+        if: success()
         run: |
           echo "## Pytest Markdown Report"
           echo '```markdown'
           cat pytest_report.md
           echo '```'
+
+      - name: Fail if pytest fails
+        if: failure()
+        run: |
+          echo "Pytest run failed. Check the pytest output above for details."
+          exit 1
