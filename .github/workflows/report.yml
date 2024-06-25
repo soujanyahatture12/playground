@@ -24,11 +24,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest pytest-markdown-docs
+        pip install pytest pytest-md
     
     - name: Run tests and generate markdown report
       run: |
-        pytest --md-report=pytest_report.md
+        pytest --md=pytest_report.md
     
     - name: Display markdown report
       run: |
