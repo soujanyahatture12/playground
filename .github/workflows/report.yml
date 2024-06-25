@@ -23,9 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pytest-markdown-docs
 
-      - name: Print pytest-markdown-docs version
-        run: pip show pytest-markdown-docs
-
       - name: Verify file presence
         run: |
           if [ ! -f ".github/workflows/test_calculator.py" ]; then
@@ -33,9 +30,9 @@ jobs:
             exit 1
           fi
 
-      - name: Run tests and generate markdown report
+      - name: Run all tests and generate markdown report
         run: |
-          pytest .github/workflows/test_calculator.py --md --md-file=pytest_report.md
+          pytest --markdown-docs --md-file=pytest_report.md
 
       - name: Display markdown report
         run: |
