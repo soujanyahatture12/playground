@@ -41,7 +41,7 @@ jobs:
     
     - name: Run tests and generate markdown report
       run: |
-        pytest .github/workflows/test_calculator.py --md=pytest_report.md
+        pytest .github/workflows/test_calculator.py --md pytest_report.md
     
     - name: Display markdown report
       run: |
