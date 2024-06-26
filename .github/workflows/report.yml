@@ -38,12 +38,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pytest-md-report
 
-      - name: Run pytest with markdown-docs and debug output
+      - name: Run pytest with markdown report
         run: |
-          pytest -v --md > pytest_report.md || echo "Pytest failed"
+          echo "Running tests and generating Markdown report..."
+          pytest --md=pytest_report.md
           cat pytest_report.md
 
-      - name: Display markdown report
+      - name: Display Markdown report
         if: success()
         run: |
           echo "## Pytest Markdown Report"
