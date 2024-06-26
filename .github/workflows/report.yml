@@ -41,7 +41,7 @@ jobs:
       - name: Run pytest with markdown report
         run: |
           echo "Running tests and generating Markdown report..."
-          pytest --md=pytest_report.md
+          pytest --md-report=pytest_report.md
           cat pytest_report.md
 
       - name: Display Markdown report
