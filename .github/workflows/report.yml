@@ -38,10 +38,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pytest-md-report
 
+      - name: Verify plugin installation
+        run: |
+          echo "Verifying pytest-md-report installation..."
+          pip show pytest-md-report
+
       - name: Run pytest with markdown report
         run: |
           echo "Running tests and generating Markdown report..."
-          pytest --md-report --md-report-file=pytest_report.md
+          pytest --md-report -o md_report_file=pytest_report.md
           cat pytest_report.md
 
       - name: Display Markdown report
