@@ -40,7 +40,7 @@ jobs:
 
       - name: Run pytest with markdown-docs and debug output
         run: |
-          pytest -v --markdown-docs > pytest_report.md || echo "Pytest failed"
+          pytest -v --md > pytest_report.md || echo "Pytest failed"
           cat pytest_report.md
 
       - name: Display markdown report
